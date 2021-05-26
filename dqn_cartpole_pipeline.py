@@ -132,12 +132,10 @@ class DQN_Agent:
 
 """# **Setting W&B**"""
 
-pip install wandb
-import wandb
 wandb.login()
 
 # 1️⃣ Start a new run, tracking config metadata
-wandb.init(project="CartPole", config={
+wandb.init(project="CartPole_beluga", config={
     "learning_rate":3e-3,
     "Agent": "DQN",
     "sync_freq":5
