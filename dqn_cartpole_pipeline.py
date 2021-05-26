@@ -18,7 +18,8 @@ import copy
 import random
 from collections import deque
 from tqdm import tqdm
-
+import warnings
+warnings.filterwarnings("ignore")
 
 reward_arr=[]
 episode_count=50  # iterations 
@@ -130,6 +131,7 @@ class DQN_Agent:
 
 """# **Setting W&B**"""
 print('Pushing to W&B')
+import wandb
 wandb.login()
 
 # 1️⃣ Start a new run, tracking config metadata
