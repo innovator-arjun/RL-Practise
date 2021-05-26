@@ -19,15 +19,13 @@ import random
 from collections import deque
 from tqdm import tqdm
 
-import matplotlib.pyplot as plt
-# %matplotlib inline
 
 reward_arr=[]
 episode_count=50  # iterations 
 env=gym.make('CartPole-v0')  # creating the environment for the cartpole
 
 """# **The Behavior of a Random Agent**"""
-
+print('Program started')
 for i in range(episode_count):
   state=env.reset()  # reseting the environment every episode
   done=False
@@ -131,7 +129,7 @@ class DQN_Agent:
         return loss.item()
 
 """# **Setting W&B**"""
-
+print('Pushing to W&B')
 wandb.login()
 
 # 1️⃣ Start a new run, tracking config metadata
@@ -143,7 +141,7 @@ wandb.init(project="CartPole_beluga", config={
 config = wandb.config
 
 
-
+print('RL started')
 env = gym.make('CartPole-v0')
 input_dim = env.observation_space.shape[0]
 output_dim = env.action_space.n
@@ -198,16 +196,6 @@ for i in tqdm(range(episodes)):
     losses_list.append(losses / ep_len), reward_list.append(rew)  # to append the values to the list to keep the track
     episode_len_list.append(ep_len), epsilon_list.append(epsilon) # to append the values to the list to keep the track
 
-print("Saving trained model")
-agent.save_trained_model("cartpole-dqn.pth")
+print("Finished!")
 
-"""# **Visualizations**"""
-
-plt.plot(reward_list)
-
-plt.plot(losses_list)
-
-plt.plot(episode_len_list)
-
-plt.plot(epsilon_list)
 
