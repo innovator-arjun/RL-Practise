@@ -16,8 +16,8 @@ executor.update_parameters(
         slurm_additional_parameters={"account": "rrg-bengioy-ad"},
         tasks_per_node=num_gpus,
         cpus_per_task=workers_per_gpu,
-        slurm_mem="16G",#16G
-        slurm_array_parallelism=100,
+        slurm_mem="16G"#16G
+        
     )
 
 job = executor.submit(add, 5, 7)  # will compute add(5, 7)
