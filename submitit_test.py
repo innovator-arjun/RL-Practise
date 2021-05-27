@@ -5,9 +5,10 @@ def add(a, b):
 
 # executor is the submission interface (logs are dumped in the folder)
 executor = submitit.AutoExecutor(folder="log_test")
+
 # set timeout in min, and partition for running the job
 num_gpus = 1
-workers_per_gpu = 1
+workers_per_gpu = 10
 
 executor.update_parameters(
         timeout_min=60,
@@ -16,8 +17,9 @@ executor.update_parameters(
         tasks_per_node=num_gpus,
         cpus_per_task=workers_per_gpu,
         slurm_mem="16G",#16G
-        slurm_array_parallelism=10,
+        slurm_array_parallelism=100,
     )
+
 job = executor.submit(add, 5, 7)  # will compute add(5, 7)
 print(job.job_id)  # ID of your job
 
