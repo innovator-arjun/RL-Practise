@@ -9,7 +9,7 @@ executor = submitit.AutoExecutor(folder="log_test")
 num_gpus = 1
 workers_per_gpu = 1
 
-    executor.update_parameters(
+executor.update_parameters(
         timeout_min=60,
         gpus_per_node=num_gpus,
         slurm_additional_parameters={"account": "rrg-bengioy-ad"},
